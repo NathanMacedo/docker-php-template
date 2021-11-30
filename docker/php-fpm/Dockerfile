@@ -1,7 +1,9 @@
 FROM 'phpdockerio/php:8.0-fpm'
+#php:8-alpine3.14
 
 WORKDIR "/application"
 
+#TODO : install with apk to alpine image version
 RUN apt-get update; \
     apt-get -y --no-install-recommends install \
         php8.0-bcmath \ 
@@ -20,3 +22,7 @@ RUN apt-get update; \
     apt-get clean; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+RUN apt-get update; \ 
+    apt-get -y --no-install-recommends install \
+    nodejs \  
+    npm
